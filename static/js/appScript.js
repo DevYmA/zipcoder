@@ -6,7 +6,7 @@ document.querySelector("body").addEventListener('click', deleteNotificationInfo)
 //Fetch information over WebService
 function getInfo(e){
     const zipcode = document.querySelector('#zipcode').value;
-    fetch(`http://api.zippopotam.us/lk/${zipcode}`)
+    fetch(`https://api.zippopotam.us/lk/${zipcode}`)
     .then(res => {
       if(res.status != 200){
         displayIcon('remove');
@@ -33,7 +33,7 @@ function getInfo(e){
       let result = '';
       data.places.forEach(place => {
         result += `
-           <article class="message is-primary">
+           <article class="message is-success">
               <div class="message-header" >
                 <p>Location Info</p>
                 <button class="delete"></button>
@@ -73,7 +73,7 @@ function deleteNotificationInfo(e){
     if (e.target.className == 'delete') {
         document.querySelector('.message').remove();
         document.querySelector('#zipcode').value = '';
-        document.querySelector(".icon-check").remove();
-        document.querySelector(".icon-remove").remove();
+        document.querySelector(".icon-check").style.display = 'none';
+        document.querySelector(".icon-remove").style.display = 'none';
     }
 }
